@@ -9,8 +9,8 @@ module StationParser =
         stationId: string; 
         name: string; 
         state: string;
-        latitude: string; 
-        longitude: string; 
+        latitude: float; 
+        longitude: float; 
         elevation: float
         } 
     let stationToJson station = 
@@ -20,11 +20,11 @@ module StationParser =
         lines |> Seq.map (fun line ->
                 { 
                     stationId = line.[0..10];
-                    latitude = line.[12..19];
-                    longitude = line.[21..29];
+                    latitude = line.[12..19] |> float;
+                    longitude = line.[21..29] |> float;
                     elevation = line.[31..36] |> float;
                     state = line.[38..39];
-                    name = line.[40..70];
+                    name = (line.[40..70]).Trim();
                 }
             )
 
