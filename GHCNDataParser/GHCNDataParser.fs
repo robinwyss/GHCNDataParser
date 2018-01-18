@@ -39,11 +39,10 @@ let readDataFromFolder dataFolder =
             for file in Directory.GetFiles(dataFolder) do
                 parseFile file
 
-
 [<EntryPoint>]
 let main argv =
     if argv.Length = 0 then
-        readDataFromFolder @"C:\Users\robin\Downloads\ghcnd_gsn\ghcnd_gsn"
+        readDataFromFolder @"C:\Users\robin\Documents\Code\GHCN\data\ghcnd_gsn\ghcnd_gsn"
      else
         readDataFromFolder argv.[0]
     System.Console.ReadKey() |> ignore
